@@ -3,7 +3,7 @@ import './App.css';
 import Header from "./Components/Header.js"
 import Homepage from "./Pages/Homepage.js";
 import CoinPage from "./Pages/CoinPage.js";
-import { styled } from '@mui/styles';
+
 import Login from "./Pages/Login.js";
 import Categorie from "./Pages/Categorie.js";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -21,14 +21,7 @@ import { UserProvider } from "./Context/UserContext.js";
 
 
 
-const AppContainer = styled('div')({
-  backgroundColor: "#181A20",
-  color: 'white',
 
-  minHeight: '100vh',
-  width: '100%',
-
-});
 
 const darkTheme = createTheme({
   palette: {
