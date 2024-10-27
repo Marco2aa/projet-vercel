@@ -29,7 +29,6 @@ const darkTheme = createTheme({
   },
 });
 
-toast.configure();
 
 function App() {
   return (
