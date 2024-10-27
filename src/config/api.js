@@ -13,6 +13,6 @@ export const TrendingCoins = (currency) =>
 export const GetDataBaseCoins = (nbPage) =>
   `${BASE_URL}/api/cryptos?page=${nbPage}`
 
-export const BASE_URL = "https://afflokat-marc.store/public"
+export const BASE_URL = "https://aflokat-marc.store/public"
 
 
