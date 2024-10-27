@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, Link } from 'react-router-dom';
 import { CryptoState } from '../Context/CryptoContext.js';
 import { makeStyles } from '@mui/styles';
-import { LinearProgress, Typography, Box } from '@mui/material';
+import { LinearProgress, Typography, Box, IconButton } from '@mui/material';
 import axios from 'axios';
 import CoinInfo from '../Components/CoinInfo.js';
 import { numberWithCommas } from '../Components/Banner/Carousel.js';
 import { SingleCoin } from '../config/api.js';
+import { useTheme } from '@mui/material/styles';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const CoinPage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
   const { currency, symbol } = CryptoState();
-
+  const theme = useTheme();
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
     setCoin(data);
@@ -22,17 +24,17 @@ const CoinPage = () => {
     fetchCoin();
   }, []);
 
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles(() => ({
     container: {
       display: "flex",
-      [theme.breakpoints.down("md")]: {
+      [theme?.breakpoints.down("md")]: {
         flexDirection: "column",
         alignItems: "center",
       },
     },
     sidebar: {
       width: "30%",
-      [theme.breakpoints.down("md")]: {
+      [theme?.breakpoints.down("md")]: {
         width: "100%",
       },
       display: "flex",
@@ -62,15 +64,15 @@ const CoinPage = () => {
       display: "flex",
       gap: "10px",
       flexDirection: "column",
-      [theme.breakpoints.up("md")]: {
+      [theme?.breakpoints.up("md")]: {
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "space-between",
       },
-      [theme.breakpoints.down("sm")]: {
+      [theme?.breakpoints.down("sm")]: {
         alignItems: "center",
       },
-      [theme.breakpoints.down("xs")]: {
+      [theme?.breakpoints.down("xs")]: {
         alignItems: "start",
       },
     },
@@ -93,6 +95,18 @@ const CoinPage = () => {
 
   return (
     <div className={classes.container}>
+      <IconButton
+        component={Link}
+        to="/"
+        sx={{
+          position: 'absolute',
+          top: 16,
+          left: 16,
+          color: 'gray',
+        }}
+      >
+        <ArrowBackIcon />
+      </IconButton>
       <div className={classes.sidebar}>
         <img
           src={coin?.image.large}

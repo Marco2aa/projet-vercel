@@ -10,6 +10,7 @@ export default function ColorSchemeToggle(props) {
     const { mode, setMode } = useColorScheme();
     const [mounted, setMounted] = React.useState(false);
     React.useEffect(() => {
+        setMode('dark'); // Activer le mode sombre par défaut
         setMounted(true);
     }, []);
     if (!mounted) {
