@@ -126,7 +126,7 @@ export default function DataTable() {
         }}>
 
 
-            {loading && <LinearProgress style={{ width: '100%', position: 'relative', backgroundColor: 'orange' }} />}
+
             <DataGrid
                 rows={rows}
                 columns={columns}

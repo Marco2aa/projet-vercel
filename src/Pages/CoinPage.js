@@ -15,9 +15,15 @@ const CoinPage = () => {
   const [coin, setCoin] = useState();
   const { currency, symbol } = CryptoState();
   const theme = useTheme();
+
+
   const fetchCoin = async () => {
-    const { data } = await axios.get(SingleCoin(id));
-    setCoin(data);
+    try {
+      const { data } = await axios.get(SingleCoin(id));
+      setCoin(data);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données de la pièce :", error);
+    }
   };
 
   useEffect(() => {

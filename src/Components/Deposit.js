@@ -7,6 +7,8 @@ import axios from 'axios'
 import { useNavigate } from 'react-router';
 import { loadStripe } from '@stripe/stripe-js';
 import { BASE_URL } from '../config/api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Deposit = () => {
@@ -62,6 +64,7 @@ const Deposit = () => {
                     sessionId: response.data.sessionId
                 })
             } catch (error) {
+                toast.error('Le dépôt a échoué');
                 console.error(error);
             }
         } else {

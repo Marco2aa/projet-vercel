@@ -19,6 +19,12 @@ import './RegisterForm/RegisterForm.css'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { loadStripe } from '@stripe/stripe-js';
 import { BASE_URL } from '../config/api';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+
+
+
+
 
 
 function TabPanel(props) {
@@ -178,8 +184,10 @@ export default function BuyCrypto() {
                     },
                 }
             );
+            toast.success('Vente de Crypto réussi !');
             console.log('Order created successfully:', response.data);
         } catch (error) {
+            toast.error('La vente a echoué , veuillez recommencer plus tard');
             console.error('Error creating sell order:', error);
         }
     };
